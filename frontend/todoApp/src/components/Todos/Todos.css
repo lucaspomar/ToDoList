@@ -1,4 +1,4 @@
-.container {
+.container-todos {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -9,14 +9,14 @@
     border-radius: 10px;
 }
 
-.inputs {
+.inputs-todos {
     display: flex;
     flex-direction: column;
     width: 70%;
     margin-top: 0px;
 }
 
-.input {
+.input-todos {
     display: flex;
     align-items: center;
     margin: auto;
@@ -26,11 +26,11 @@
     border-radius: 6px;
 }
 
-.input img {
+.input-todos img {
     margin: 0px 30px;
 }
 
-.input input {
+.input-todos input {
     width: 400px;
     height: 50px;
     background: transparent;
