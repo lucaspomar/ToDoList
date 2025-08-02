@@ -3,3 +3,25 @@ body {
     height: 100vh;
     background: linear-gradient(royalblue, rgb(84, 114, 197));
 }
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.text {
+    color: royalblue;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.underline {
+    width: 90%;
+    height: 6px;
+    background: royalblue;
+    border-radius: 6px;
+}
