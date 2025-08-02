@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions
 from rest_framework.generics import CreateAPIView
 from django.contrib.auth.models import User
+from rest_framework.pagination import PageNumberPagination
 
 from .models import Todo
 from .serializers import TodoSerializer, UserSerializer
@@ -17,3 +18,4 @@ class TodoViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+    pagination_class = PageNumberPagination
