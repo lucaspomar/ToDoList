@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 import './Login.css'
 import email_icon from '../../assets/email.png'
@@ -8,20 +9,50 @@ import user_icon from '../../assets/person.png'
 export const Login = () => {
 
     const [action, setAction] = useState('Login')
+    const [user, setUser] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    function resetFields() {
+        setUser('')
+        setEmail('')
+        setPassword('')
+    }
     
     function handleLoginClick() {
         if (action != 'Login') {
             setAction('Login')
+            resetFields()
         } else {
-
+            axios.post('/auth/', {
+                username: user,
+                password: password
+            })
+            .then(response => {
+                console.log('Login realizado:', response.data);
+            })
+            .catch(error => {
+                console.error('Login error:', error.response ? error.response.data : error.message);
+            });
         }
     }
 
     function handleCadastroClick() {
         if (action != 'Cadastro') {
             setAction('Cadastro')
+            resetFields()
         } else {
-            
+            axios.post('/register/', {
+                username: user,
+                email: email,
+                password: password
+            })
+            .then(response => {
+                console.log('Cadastro realizado:', response.data);
+            })
+            .catch(error => {
+                console.error('Cadastro error:', error.response ? error.response.data : error.message);
+            });
         }
     }
 
@@ -34,19 +65,19 @@ export const Login = () => {
             <div className='inputs'>
                 <div className='input'>
                     <img src={user_icon} alt='' />
-                    <input type='text' placeholder='Usuário' />
+                    <input type='text' placeholder='Usuário' value={user} onChange={(v) => setUser(v.target.value)} />
                 </div>
 
                 { action === 'Login' ? null : 
                     <div className='input'>
                         <img src={email_icon} alt='' />
-                        <input type='email' placeholder='Email' />
+                        <input type='email' placeholder='Email' value={email} onChange={(v) => setEmail(v.target.value)} />
                     </div>
                 }
                 
                 <div className='input'>
                     <img src={password_icon} alt='' />
-                    <input type='password' placeholder='Senha' />
+                    <input type='password' placeholder='Senha' value={password} onChange={(v) => setPassword(v.target.value)} />
                 </div>
             </div>
             <div className="submit-container">
