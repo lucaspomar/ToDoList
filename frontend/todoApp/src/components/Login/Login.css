@@ -81,3 +81,8 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+.gray {
+    background: rgb(235, 235, 235);
+    color: gray;
+}
