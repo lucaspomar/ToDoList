@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './Login.css'
@@ -12,6 +13,8 @@ export const Login = () => {
     const [user, setUser] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate();
 
     function resetFields() {
         setUser('')
@@ -27,6 +30,7 @@ export const Login = () => {
             .then(response => {
                 console.log('Login realizado:', response.data);
                 sessionStorage.setItem('token', response.data.access);
+                navigate('/todos');
             })
             .catch(error => {
                 console.error('Login error:', error.response ? error.response.data : error.message);
