@@ -25,6 +25,10 @@ export const Todos = () => {
                 setTodos(response.data.results);
             })
             .catch(error => {
+                if (error.response.status === 401) {
+                    sessionStorage.removeItem('token');
+                    navigate('/');
+                }
                 console.error('Todos error:', error.response ? error.response.data : error.message);
             });
         }
