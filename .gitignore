@@ -237,3 +237,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+frontend/todoApp/.vite/deps/_metadata.json
+frontend/todoApp/.vite/deps/package.json

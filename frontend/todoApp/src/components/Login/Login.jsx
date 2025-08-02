@@ -18,22 +18,27 @@ export const Login = () => {
         setEmail('')
         setPassword('')
     }
+
+    function loginUser() {
+        axios.post('/auth/', {
+                username: user,
+                password: password
+            })
+            .then(response => {
+                console.log('Login realizado:', response.data);
+                sessionStorage.setItem('token', response.data.access);
+            })
+            .catch(error => {
+                console.error('Login error:', error.response ? error.response.data : error.message);
+            });
+    }
     
     function handleLoginClick() {
         if (action != 'Login') {
             setAction('Login')
             resetFields()
         } else {
-            axios.post('/auth/', {
-                username: user,
-                password: password
-            })
-            .then(response => {
-                console.log('Login realizado:', response.data);
-            })
-            .catch(error => {
-                console.error('Login error:', error.response ? error.response.data : error.message);
-            });
+            loginUser();    
         }
     }
 
@@ -49,6 +54,7 @@ export const Login = () => {
             })
             .then(response => {
                 console.log('Cadastro realizado:', response.data);
+                loginUser();
             })
             .catch(error => {
                 console.error('Cadastro error:', error.response ? error.response.data : error.message);
