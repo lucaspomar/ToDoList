@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
@@ -15,6 +15,8 @@ export const Login = () => {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate();
+
+    const token = sessionStorage.getItem('token');
 
     function resetFields() {
         setUser('')
@@ -65,6 +67,12 @@ export const Login = () => {
             });
         }
     }
+    
+    useEffect(() => {
+        if (token) {
+            navigate('/todos');
+        }
+    })
 
     return (
         <div className='container'>
