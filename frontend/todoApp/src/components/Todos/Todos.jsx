@@ -35,7 +35,13 @@ export const Todos = () => {
     }, []);
 
     const todosList = todos.map(todo => 
-        <div key={todo.id} className='underline'></div>    
+        <div key={todo.id} className='todo-item'>
+            <h2>{todo.title}</h2>
+            <h1>{todo.description}</h1>
+            <h1>{todo.due_date}</h1>
+            <h1>{todo.complete}</h1>
+            <div className='underline-todo'></div>  
+        </div>  
     );
 
     return (
@@ -50,8 +56,8 @@ export const Todos = () => {
                 </div>
             </div>
             <div className='underline'></div>
-            {todosList}
         </div> 
+        {todosList}
     </div>
   )
 }

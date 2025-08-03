@@ -39,3 +39,18 @@
     font-size: 19px;
     color: royalblue;
 }
+
+.todo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+}
+
+.underline-todo {
+    align-self: center;
+    width: 90%;
+    height: 6px;
+    background: royalblue;
+    border-radius: 6px;
+}
