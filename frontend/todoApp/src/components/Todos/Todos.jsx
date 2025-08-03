@@ -10,6 +10,7 @@ export const Todos = () => {
 
     const token = sessionStorage.getItem('token');
     const [todos, setTodos] = useState([]);
+    const [search, setSearch] = useState([]);
 
     function handleInvalidToken(error) {
         if (error.response.status === 401 ) {
@@ -18,12 +19,19 @@ export const Todos = () => {
         }
     }
 
-    function fetchTodos() {
-        axios.get('/todos/', {
+    function fetchTodos(search = '') {
+
+        const request = {
             headers: {
                 'Authorization': `Bearer ${token}`
-            }
-        })
+            }    
+        };
+
+        if (search) {
+            request.params = { search: search };
+        }
+
+        axios.get('/todos/', request)
         .then(response => {
             console.log('Todos fetched:', response.data);
             setTodos(response.data.results);
@@ -70,6 +78,11 @@ export const Todos = () => {
         });    
     }
 
+    function HandleSearchChange(search) {
+        setSearch(search);
+        fetchTodos(search);
+    }
+
     useEffect(() => {
         if (!token) {
             navigate('/');
@@ -101,7 +114,7 @@ export const Todos = () => {
             <div className='inputs-todos'>
                 <div className='input-todos'>
                     <img src={user_icon} alt='' />
-                    <input type='text' placeholder='Busca' />
+                    <input type='text' placeholder='Busca' value={search} onChange={(v) => HandleSearchChange(v.target.value)}/>
                 </div>
             </div>
             <div className='underline'></div>
