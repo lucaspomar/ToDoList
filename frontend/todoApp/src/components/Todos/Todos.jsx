@@ -36,11 +36,16 @@ export const Todos = () => {
 
     const todosList = todos.map(todo => 
         <div key={todo.id} className='todo-item'>
-            <h2>{todo.title}</h2>
-            <h1>{todo.description}</h1>
-            <h1>{todo.due_date}</h1>
-            <h1>{todo.complete}</h1>
-            <div className='underline-todo'></div>  
+            <div className='todo-title'>{todo.title}</div>
+            <div className='todo-text'>{todo.description}</div>
+            <div className='todo-text'>{todo.due_date}</div>
+            <div className='todo-text'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
+            <div className="todo-actions">
+                <div className='todo-button green' >{todo.complete ? "Finalizar" : "Recomeçar"}</div>
+                <div className='todo-button' >Editar</div>
+                <div className='todo-button red' >Deletar</div>
+            </div>  
+            <div className='underline-todo'></div>
         </div>  
     );
 
