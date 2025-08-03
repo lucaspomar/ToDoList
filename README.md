@@ -2,7 +2,7 @@
 
 # Sobre o projeto
 
-Projeto Fullstack desenvolvido usando Python e React para o desenvolvimento de uma aplicação de gerenciamento de tarefas.
+Projeto fullstack para gerenciamento de tarefas, desenvolvido com Django Rest Framework no back-end e React no front-end. O sistema permite o cadastro, edição, deleção e visualização de tarefas, com funcionalidades como autenticação de usuários, paginação e filtragem.
 
 # Tecnologias utilizadas
 
