@@ -54,6 +54,22 @@ export const Todos = () => {
         });  
     }
 
+    function HandleDeleteClick(todo) {
+        axios.delete(`/todos/${todo.id}/`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            console.log('Todo deleted:', response.data);
+            fetchTodos();
+        })
+        .catch(error => {
+            handleInvalidToken(error);
+            console.error('Delete error:', error.response ? error.response.data : error.message);
+        });    
+    }
+
     useEffect(() => {
         if (!token) {
             navigate('/');
@@ -71,7 +87,7 @@ export const Todos = () => {
             <div className="todo-actions">
                 <div className='todo-button green' onClick={() => HandleFinishClick(todo)} >{todo.complete ? "Finalizar" : "Recomeçar"}</div>
                 <div className='todo-button' >Editar</div>
-                <div className='todo-button red' >Deletar</div>
+                <div className='todo-button red' onClick={() => HandleDeleteClick(todo)} >Deletar</div>
             </div>  
             <div className='underline-todo'></div>
         </div>  
