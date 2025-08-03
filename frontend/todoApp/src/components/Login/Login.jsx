@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './Login.css'
@@ -13,10 +14,29 @@ export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const navigate = useNavigate();
+
+    const token = sessionStorage.getItem('token');
+
     function resetFields() {
         setUser('')
         setEmail('')
         setPassword('')
+    }
+
+    function loginUser() {
+        axios.post('/auth/', {
+                username: user,
+                password: password
+            })
+            .then(response => {
+                console.log('Login realizado:', response.data);
+                sessionStorage.setItem('token', response.data.access);
+                navigate('/todos');
+            })
+            .catch(error => {
+                console.error('Login error:', error.response ? error.response.data : error.message);
+            });
     }
     
     function handleLoginClick() {
@@ -24,16 +44,7 @@ export const Login = () => {
             setAction('Login')
             resetFields()
         } else {
-            axios.post('/auth/', {
-                username: user,
-                password: password
-            })
-            .then(response => {
-                console.log('Login realizado:', response.data);
-            })
-            .catch(error => {
-                console.error('Login error:', error.response ? error.response.data : error.message);
-            });
+            loginUser();    
         }
     }
 
@@ -49,12 +60,19 @@ export const Login = () => {
             })
             .then(response => {
                 console.log('Cadastro realizado:', response.data);
+                loginUser();
             })
             .catch(error => {
                 console.error('Cadastro error:', error.response ? error.response.data : error.message);
             });
         }
     }
+    
+    useEffect(() => {
+        if (token) {
+            navigate('/todos');
+        }
+    })
 
     return (
         <div className='container'>
