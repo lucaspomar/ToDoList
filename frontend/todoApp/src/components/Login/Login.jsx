@@ -75,7 +75,7 @@ export const Login = () => {
     })
 
     return (
-        <div className='container'>
+        <div className='bg-white flex flex-col rounded-xl m-auto mt-25 pb-5 w-150'>
             <div className='header'>
                 <div className='text'>{action}</div>
                 <div className='underline'></div>
