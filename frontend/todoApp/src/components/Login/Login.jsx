@@ -78,7 +78,7 @@ export const Login = () => {
         <div className='bg-white flex flex-col rounded-xl m-auto mt-25 pb-5 w-150'>
             <div className='flex flex-col items-center gap-4 mt-8 w-full'>
                 <div className='text-blue-500 font-bold text-5xl'>{action}</div>
-                <div className='underline'></div>
+                <div className='bg-blue-500 rounded-md h-1.5 w-9/10'></div>
             </div>
             <div className='inputs'>
                 <div className='input'>
