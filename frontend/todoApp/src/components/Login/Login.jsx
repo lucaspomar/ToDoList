@@ -76,7 +76,7 @@ export const Login = () => {
 
     return (
         <div className='bg-white flex flex-col rounded-xl m-auto mt-25 pb-5 w-150'>
-            <div className='header'>
+            <div className='flex flex-col items-center gap-4 mt-8 w-full'>
                 <div className='text'>{action}</div>
                 <div className='underline'></div>
             </div>
