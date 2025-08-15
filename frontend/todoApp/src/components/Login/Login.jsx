@@ -82,19 +82,19 @@ export const Login = () => {
             </div>
             <div className='inputs flex flex-col gap-6 mt-14'>
                 <div className='input'>
-                    <img src={user_icon} alt='' />
+                    <img className='mx-8' src={user_icon} alt='' />
                     <input type='text' placeholder='Usuário' value={user} onChange={(v) => setUser(v.target.value)} />
                 </div>
 
                 { action === 'Login' ? null : 
                     <div className='input'>
-                        <img src={email_icon} alt='' />
+                        <img className='mx-8' src={email_icon} alt='' />
                         <input type='email' placeholder='Email' value={email} onChange={(v) => setEmail(v.target.value)} />
                     </div>
                 }
                 
                 <div className='input'>
-                    <img src={password_icon} alt='' />
+                    <img className='mx-8' src={password_icon} alt='' />
                     <input type='password' placeholder='Senha' value={password} onChange={(v) => setPassword(v.target.value)} />
                 </div>
             </div>
