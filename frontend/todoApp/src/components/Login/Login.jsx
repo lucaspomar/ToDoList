@@ -80,7 +80,7 @@ export const Login = () => {
                 <div className='text-blue-500 font-bold text-5xl'>{action}</div>
                 <div className='bg-blue-500 rounded-md h-1.5 w-9/10'></div>
             </div>
-            <div className='inputs'>
+            <div className='inputs flex flex-col gap-6 mt-14'>
                 <div className='input'>
                     <img src={user_icon} alt='' />
                     <input type='text' placeholder='Usuário' value={user} onChange={(v) => setUser(v.target.value)} />
