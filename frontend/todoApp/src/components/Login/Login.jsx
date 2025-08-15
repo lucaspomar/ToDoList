@@ -81,7 +81,7 @@ export const Login = () => {
                 <div className='bg-blue-500 rounded-md h-1.5 w-9/10'></div>
             </div>
             <div className='inputs flex flex-col gap-6 mt-14'>
-                <div className='input'>
+                <div className='flex items-center bg-gray-200 rounded-md m-auto w-120 h-20'>
                     <img className='mx-8' src={user_icon} alt='' />
                     <input className='text-blue-500 bg-transparent text-xl outline-none border-none w-full h-full'
                            type='text'
@@ -92,7 +92,7 @@ export const Login = () => {
                 </div>
 
                 { action === 'Login' ? null :
-                    <div className='input'>
+                    <div className='flex items-center bg-gray-200 rounded-md m-auto w-120 h-20'>
                         <img className='mx-8' src={email_icon} alt='' />
                         <input className='text-blue-500 bg-transparent text-xl outline-none border-none w-full h-full'
                                type='email'
@@ -103,7 +103,7 @@ export const Login = () => {
                     </div>
                 }
 
-                <div className='input'>
+                <div className='flex items-center bg-gray-200 rounded-md m-auto w-120 h-20'>
                     <img className='mx-8' src={password_icon} alt='' />
                     <input className='text-blue-500 bg-transparent text-xl outline-none border-none w-full h-full'
                            type='password'
