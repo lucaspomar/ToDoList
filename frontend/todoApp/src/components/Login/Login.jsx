@@ -113,7 +113,7 @@ export const Login = () => {
                     />
                 </div>
             </div>
-            <div className="submit-container">
+            <div className="flex gap-8 my-15 mx-auto">
                 <div className={action === 'Login' ? "submit gray" : "submit"} onClick={handleCadastroClick}>Cadastro</div>
                 <div className={action === 'Cadastro' ? "submit gray" : "submit"} onClick={handleLoginClick}>Login</div>
             </div>
