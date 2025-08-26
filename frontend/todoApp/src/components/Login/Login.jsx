@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
-import './Login.css'
 import email_icon from '../../assets/email.png'
 import password_icon from '../../assets/password.png'
 import user_icon from '../../assets/person.png'
@@ -114,8 +113,16 @@ export const Login = () => {
                 </div>
             </div>
             <div className="flex gap-8 my-15 mx-auto">
-                <div className={action === 'Login' ? "submit gray" : "submit"} onClick={handleCadastroClick}>Cadastro</div>
-                <div className={action === 'Cadastro' ? "submit gray" : "submit"} onClick={handleLoginClick}>Login</div>
+                <div className={`flex justify-center items-center w-55 h-15 rounded-full text-lg font-bold cursor-pointer 
+                    ${action === 'Login' ? 'bg-gray-200 text-zinc-500' : 'text-white bg-blue-500'}`}
+                     onClick={handleCadastroClick}>
+                    Cadastro
+                </div>
+                <div className={`flex justify-center items-center w-55 h-15 rounded-full text-lg font-bold cursor-pointer 
+                    ${action === 'Cadastro' ? 'bg-gray-200 text-zinc-500' : 'text-white bg-blue-500'}`}
+                     onClick={handleLoginClick}>
+                    Login
+                </div>
             </div>
         </div>
     )
