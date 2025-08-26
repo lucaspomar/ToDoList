@@ -40,7 +40,7 @@ export const Login = () => {
     }
 
     function handleLoginClick() {
-        if (action != 'Login') {
+        if (action !== 'Login') {
             setAction('Login')
             resetFields()
         } else {
@@ -49,7 +49,7 @@ export const Login = () => {
     }
 
     function handleCadastroClick() {
-        if (action != 'Cadastro') {
+        if (action !== 'Cadastro') {
             setAction('Cadastro')
             resetFields()
         } else {
