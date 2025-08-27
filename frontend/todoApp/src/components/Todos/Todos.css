@@ -40,15 +40,6 @@
     color: royalblue;
 }
 
-.todo-item {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    width: 100%;
-    padding-top: 15px;
-    gap: 15px;
-}
-
 .underline-todo {
     align-self: center;
     width: 90%;

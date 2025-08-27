@@ -92,7 +92,7 @@ export const Todos = () => {
     }, []);
 
     const todosList = todos.map(todo => 
-        <div key={todo.id} className='todo-item'>
+        <div key={todo.id} className='flex flex-col w-full pt-4 gap-4'>
             <div className='todo-title'>{todo.title}</div>
             <div className='todo-text'>{todo.description}</div>
             <div className='todo-text'>{todo.due_date}</div>
