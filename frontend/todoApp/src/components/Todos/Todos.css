@@ -47,25 +47,3 @@
     background: royalblue;
     border-radius: 6px;
 }
-
-.todo-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 40px;
-    color: white;
-    background: royalblue;
-    border-radius: 10px;
-    font-size: 19px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.red {
-    background: red;
-}
-
-.green {
-    background: green;
-}
