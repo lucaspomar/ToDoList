@@ -97,7 +97,7 @@ export const Todos = () => {
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.description}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.due_date}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
-            <div className="todo-actions">
+            <div className="flex gap-5 m-auto">
                 <div className='todo-button green' onClick={() => HandleFinishClick(todo)} >{todo.complete ? "Finalizar" : "Recomeçar"}</div>
                 <div className='todo-button' >Editar</div>
                 <div className='todo-button red' onClick={() => HandleDeleteClick(todo)} >Deletar</div>

@@ -48,12 +48,6 @@
     border-radius: 6px;
 }
 
-.todo-actions {
-    display: flex;
-    gap: 20px;
-    margin: auto;
-}
-
 .todo-button {
     display: flex;
     justify-content: center;
