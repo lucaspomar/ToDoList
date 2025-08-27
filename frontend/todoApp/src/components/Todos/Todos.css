@@ -48,14 +48,6 @@
     border-radius: 6px;
 }
 
-.todo-title {
-    color: royalblue;
-    font-size: 24px;
-    font-weight: 700;
-    width: 90%;
-    margin: auto;
-}
-
 .todo-text {
     color: black;
     font-size: 24px;
