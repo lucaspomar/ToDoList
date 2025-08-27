@@ -48,13 +48,6 @@
     border-radius: 6px;
 }
 
-.todo-text {
-    color: black;
-    font-size: 24px;
-    width: 90%;
-    margin: auto;
-}
-
 .todo-actions {
     display: flex;
     gap: 20px;

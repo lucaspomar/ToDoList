@@ -94,9 +94,9 @@ export const Todos = () => {
     const todosList = todos.map(todo => 
         <div key={todo.id} className='flex flex-col w-full pt-4 gap-4'>
             <div className='text-blue-500 text-2xl font-bold w-9/10 m-auto'>{todo.title}</div>
-            <div className='todo-text'>{todo.description}</div>
-            <div className='todo-text'>{todo.due_date}</div>
-            <div className='todo-text'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
+            <div className='text-black text-2xl w-9/10 m-auto'>{todo.description}</div>
+            <div className='text-black text-2xl w-9/10 m-auto'>{todo.due_date}</div>
+            <div className='text-black text-2xl w-9/10 m-auto'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
             <div className="todo-actions">
                 <div className='todo-button green' onClick={() => HandleFinishClick(todo)} >{todo.complete ? "Finalizar" : "Recomeçar"}</div>
                 <div className='todo-button' >Editar</div>
