@@ -1,4 +1,3 @@
-import './Todos.css'
 import user_icon from '../../assets/person.png'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -126,9 +125,15 @@ export const Todos = () => {
             <div className='text-blue-500 text-5xl font-bold'>Lista de Tarefas</div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
             <div className='flex flex-col w-7/10'>
-                <div className='input-todos'>
-                    <img src={user_icon} alt='' />
-                    <input type='text' placeholder='Busca' value={search} onChange={(v) => HandleSearchChange(v.target.value)}/>
+                <div className='flex items-center m-auto w-full h-12 rounded-md bg-gray-200'>
+                    <img className='mx-8' src={user_icon} alt='' />
+                    <input
+                        className='bg-transparent text-blue-500 text-lg w-100 h-12 border-none outline-none'
+                        type='text'
+                        placeholder='Busca'
+                        value={search}
+                        onChange={(v) => HandleSearchChange(v.target.value)}
+                    />
                 </div>
             </div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
