@@ -116,7 +116,7 @@ export const Todos = () => {
                     Deletar
                 </div>
             </div>  
-            <div className='underline-todo'></div>
+            <div className='self-center w-9/10 h-1.5 rounded-md bg-blue-500 '></div>
         </div>  
     );
 
