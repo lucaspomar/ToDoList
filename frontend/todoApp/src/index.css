@@ -5,10 +5,3 @@ body {
     height: 100vh;
     background: linear-gradient(royalblue, rgb(84, 114, 197));
 }
-
-.underline {
-    width: 90%;
-    height: 6px;
-    background: royalblue;
-    border-radius: 6px;
-}
