@@ -125,7 +125,7 @@ export const Todos = () => {
         <div className='flex flex-col items-center gap-4 w-full mt-8'>
             <div className='text-blue-500 text-5xl font-bold'>Lista de Tarefas</div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
-            <div className='inputs-todos'>
+            <div className='flex flex-col w-7/10'>
                 <div className='input-todos'>
                     <img src={user_icon} alt='' />
                     <input type='text' placeholder='Busca' value={search} onChange={(v) => HandleSearchChange(v.target.value)}/>
