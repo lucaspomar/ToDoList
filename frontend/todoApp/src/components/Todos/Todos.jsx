@@ -123,7 +123,7 @@ export const Todos = () => {
     return (
     <div className='flex flex-col mt-25 m-auto bg-white pb-8 w-7/10 rounded-xl'>
         <div className='flex flex-col items-center gap-4 w-full mt-8'>
-            <div className='text'>Lista de Tarefas</div>
+            <div className='text-blue-500 text-5xl font-bold'>Lista de Tarefas</div>
             <div className='underline'></div>
             <div className='inputs-todos'>
                 <div className='input-todos'>

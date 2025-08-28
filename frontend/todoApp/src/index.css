@@ -6,12 +6,6 @@ body {
     background: linear-gradient(royalblue, rgb(84, 114, 197));
 }
 
-.text {
-    color: royalblue;
-    font-size: 48px;
-    font-weight: 700;
-}
-
 .underline {
     width: 90%;
     height: 6px;
