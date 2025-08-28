@@ -97,7 +97,7 @@ export const Todos = () => {
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.description}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.due_date}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
-            <div className="flex flex-wrap justify-center gap-5 m-auto">
+            <div className="flex gap-5 m-auto">
                 <div
                     className='flex justify-center items-center w-50 h-10 text-white rounded-xl
                     text-lg font-bold cursor-pointer bg-green-700'
@@ -121,7 +121,7 @@ export const Todos = () => {
     );
 
     return (
-    <div className='flex flex-col mt-25 m-auto bg-white pb-8 w-7/10 rounded-xl'>
+    <div className='container-todos'>
         <div className='header'>
             <div className='text'>Lista de Tarefas</div>
             <div className='underline'></div>
