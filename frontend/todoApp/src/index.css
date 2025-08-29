@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
 body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(royalblue, rgb(84, 114, 197));
+    @apply h-screen bg-linear-to-t from-blue-500 to-indigo-500;
 }
