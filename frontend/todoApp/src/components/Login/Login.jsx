@@ -15,7 +15,7 @@ export const Login = () => {
 
     const navigate = useNavigate();
 
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('accessToken');
 
     function resetFields() {
         setUser('')
@@ -30,7 +30,7 @@ export const Login = () => {
             })
             .then(response => {
                 console.log('Login realizado:', response.data);
-                sessionStorage.setItem('token', response.data.access);
+                sessionStorage.setItem('accessToken', response.data.access);
                 sessionStorage.setItem('refreshToken', response.data.refresh);
                 navigate('/todos');
             })

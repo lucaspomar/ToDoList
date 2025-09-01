@@ -7,24 +7,20 @@ export const Todos = () => {
 
     const navigate = useNavigate();
 
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('accessToken');
     const [todos, setTodos] = useState([]);
     const [search, setSearch] = useState([]);
 
     function handleInvalidToken(error) {
         if (error.response.status === 401 ) {
-            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('accessToken');
             navigate('/');
         }
     }
 
     function fetchTodos(search = '') {
 
-        const request = {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }    
-        };
+        const request = {};
 
         if (search) {
             request.params = { search: search };
