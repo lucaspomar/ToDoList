@@ -1,7 +1,7 @@
 import instance from "./api_instance.js";
 
 async function loginAsync(user, password) {
-    await instance.post('/auth/', {
+    return await instance.post('/auth/', {
         username: user,
         password: password
     })
@@ -13,8 +13,8 @@ async function loginAsync(user, password) {
         })
         .catch(error => {
             console.error('Login error:', error.response ? error.response.data : error.message);
+            return false;
         });
-    return false
 }
 
 export { loginAsync }
