@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import instance from "../../api/api_instance.js";
 
 import email_icon from '../../assets/email.png'
 import password_icon from '../../assets/password.png'
@@ -24,13 +24,14 @@ export const Login = () => {
     }
 
     function loginUser() {
-        axios.post('/auth/', {
+        instance.post('/auth/', {
                 username: user,
                 password: password
             })
             .then(response => {
                 console.log('Login realizado:', response.data);
                 sessionStorage.setItem('token', response.data.access);
+                sessionStorage.setItem('refreshToken', response.data.refresh);
                 navigate('/todos');
             })
             .catch(error => {
@@ -52,7 +53,7 @@ export const Login = () => {
             setAction('Cadastro')
             resetFields()
         } else {
-            axios.post('/register/', {
+            instance.post('/register/', {
                 username: user,
                 email: email,
                 password: password

@@ -1,7 +1,7 @@
 import user_icon from '../../assets/person.png'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import instance from "../../api/api_instance.js";
 
 export const Todos = () => {
 
@@ -30,7 +30,7 @@ export const Todos = () => {
             request.params = { search: search };
         }
 
-        axios.get('/todos/', request)
+        instance.get('/todos/', request)
         .then(response => {
             console.log('Todos fetched:', response.data);
             setTodos(response.data.results);
@@ -42,7 +42,7 @@ export const Todos = () => {
     }
 
     function HandleFinishClick(todo) {
-        axios.patch(`/todos/${todo.id}/`, {
+        instance.patch(`/todos/${todo.id}/`, {
                 complete: !todo.complete
             }, 
             {
@@ -62,7 +62,7 @@ export const Todos = () => {
     }
 
     function HandleDeleteClick(todo) {
-        axios.delete(`/todos/${todo.id}/`, {
+        instance.delete(`/todos/${todo.id}/`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
