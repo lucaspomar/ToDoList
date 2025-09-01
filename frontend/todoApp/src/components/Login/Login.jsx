@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { loginAsync } from "../../api/api_user.js";
 import instance from "../../api/api_instance.js";
 
 import email_icon from '../../assets/email.png'
@@ -23,28 +24,14 @@ export const Login = () => {
         setPassword('')
     }
 
-    function loginUser() {
-        instance.post('/auth/', {
-                username: user,
-                password: password
-            })
-            .then(response => {
-                console.log('Login realizado:', response.data);
-                sessionStorage.setItem('accessToken', response.data.access);
-                sessionStorage.setItem('refreshToken', response.data.refresh);
-                navigate('/todos');
-            })
-            .catch(error => {
-                console.error('Login error:', error.response ? error.response.data : error.message);
-            });
-    }
-
-    function handleLoginClick() {
+    async function handleLoginClick() {
         if (action !== 'Login') {
             setAction('Login')
             resetFields()
         } else {
-            loginUser();
+            if (await loginAsync(user, password)) {
+                navigate('/todos');
+            }
         }
     }
 
