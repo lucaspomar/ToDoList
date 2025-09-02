@@ -32,7 +32,6 @@ export const Todos = () => {
             setTodos(response.data.results);
         })
         .catch(error => {
-            handleInvalidToken(error);
             console.error('Todos error:', error.response ? error.response.data : error.message);
         });    
     }
