@@ -17,4 +17,20 @@ async function loginAsync(user, password) {
         });
 }
 
-export { loginAsync }
+async function cadastroAsync(user, email, password) {
+    return await instance.post('/register/', {
+        username: user,
+        email: email,
+        password: password
+    })
+        .then(response => {
+            console.log('Cadastro realizado:', response.data);
+            return true
+        })
+        .catch(error => {
+            console.error('Cadastro error:', error.response ? error.response.data : error.message);
+            return false
+        });
+}
+
+export { loginAsync, cadastroAsync }

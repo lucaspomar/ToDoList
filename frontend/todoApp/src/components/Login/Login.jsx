@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { loginAsync } from "../../api/api_user.js";
-import instance from "../../api/api_instance.js";
+import { loginAsync, cadastroAsync } from "../../api/api_user.js";
 
 import email_icon from '../../assets/email.png'
 import password_icon from '../../assets/password.png'
@@ -35,23 +34,16 @@ export const Login = () => {
         }
     }
 
-    function handleCadastroClick() {
+    async function handleCadastroClick() {
         if (action !== 'Cadastro') {
             setAction('Cadastro')
             resetFields()
         } else {
-            instance.post('/register/', {
-                username: user,
-                email: email,
-                password: password
-            })
-            .then(response => {
-                console.log('Cadastro realizado:', response.data);
-                loginUser();
-            })
-            .catch(error => {
-                console.error('Cadastro error:', error.response ? error.response.data : error.message);
-            });
+            if (await cadastroAsync(user, email, password)) {
+                if (await loginAsync(user, password)) {
+                    navigate('/todos');
+                }
+            }
         }
     }
 
