@@ -14,4 +14,16 @@ async function getAllTodosAsync(search = '') {
         });
 }
 
-export { getAllTodosAsync }
+async function todoToggleFinishAsync(todo) {
+    return await instance.patch(`/todos/${todo.id}/`, {complete: !todo.complete})
+        .then(response => {
+            console.log('Todo updated:', response.data);
+            return true;
+        })
+        .catch(error => {
+            console.error('Finish error:', error.response ? error.response.data : error.message);
+            throw error
+        });
+}
+
+export { getAllTodosAsync, todoToggleFinishAsync };
