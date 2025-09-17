@@ -10,7 +10,7 @@ async function getAllTodosAsync(search = '') {
         })
         .catch(error => {
             console.error('Todos error:', error.response ? error.response.data : error.message);
-            return error
+            throw error
         });
 }
 

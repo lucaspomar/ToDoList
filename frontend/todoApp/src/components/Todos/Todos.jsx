@@ -1,7 +1,8 @@
 import user_icon from '../../assets/person.png'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import instance from "../../api/api_instance.js";
+import { getAllTodosAsync } from '../../api/api_todo.js';
+import instance from '../../api/api_instance.js';
 
 export const Todos = () => {
 
@@ -13,33 +14,24 @@ export const Todos = () => {
 
     function handleInvalidToken(error) {
         if (error.response.status === 401 ) {
-            sessionStorage.removeItem('accessToken');
             navigate('/');
         }
     }
 
-    function fetchTodos(search = '') {
+    async function fetchTodos(search = '') {
 
-        const request = {};
-
-        if (search) {
-            request.params = { search: search };
+        try {
+            setTodos(await getAllTodosAsync(search))
+        } catch (error) {
+            handleInvalidToken(error);
+            setTodos([])
         }
-
-        instance.get('/todos/', request)
-        .then(response => {
-            console.log('Todos fetched:', response.data);
-            setTodos(response.data.results);
-        })
-        .catch(error => {
-            console.error('Todos error:', error.response ? error.response.data : error.message);
-        });    
     }
 
     function HandleFinishClick(todo) {
         instance.patch(`/todos/${todo.id}/`, {
                 complete: !todo.complete
-            }, 
+            },
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -53,7 +45,7 @@ export const Todos = () => {
         .catch(error => {
             handleInvalidToken(error);
             console.error('Finish error:', error.response ? error.response.data : error.message);
-        });  
+        });
     }
 
     function HandleDeleteClick(todo) {
@@ -69,7 +61,7 @@ export const Todos = () => {
         .catch(error => {
             handleInvalidToken(error);
             console.error('Delete error:', error.response ? error.response.data : error.message);
-        });    
+        });
     }
 
     function HandleSearchChange(search) {
@@ -85,7 +77,7 @@ export const Todos = () => {
         }
     }, []);
 
-    const todosList = todos.map(todo => 
+    const todosList = todos.map(todo =>
         <div key={todo.id} className='flex flex-col w-full pt-4 gap-4'>
             <div className='text-blue-500 text-2xl font-bold w-9/10 m-auto'>{todo.title}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.description}</div>
@@ -109,9 +101,9 @@ export const Todos = () => {
                     onClick={() => HandleDeleteClick(todo)} >
                     Deletar
                 </div>
-            </div>  
+            </div>
             <div className='self-center w-9/10 h-1.5 rounded-md bg-blue-500 '></div>
-        </div>  
+        </div>
     );
 
     return (
@@ -132,7 +124,7 @@ export const Todos = () => {
                 </div>
             </div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
-        </div> 
+        </div>
         {todosList}
     </div>
   )
