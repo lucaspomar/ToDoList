@@ -26,4 +26,16 @@ async function todoToggleFinishAsync(todo) {
         });
 }
 
-export { getAllTodosAsync, todoToggleFinishAsync };
+async function todoDeleteAsync(todoId) {
+    return await instance.delete(`/todos/${todoId}/`)
+        .then(response => {
+            console.log('Todo deleted:', response.data);
+            return true;
+        })
+        .catch(error => {
+            console.error('Delete error:', error.response ? error.response.data : error.message);
+            throw error;
+        });
+}
+
+export { getAllTodosAsync, todoToggleFinishAsync, todoDeleteAsync };
