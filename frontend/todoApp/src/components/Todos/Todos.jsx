@@ -1,7 +1,7 @@
 import user_icon from '../../assets/person.png'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllTodosAsync } from '../../api/api_todo.js';
+import { getAllTodosAsync, todoToggleFinishAsync } from '../../api/api_todo.js';
 import instance from '../../api/api_instance.js';
 
 export const Todos = () => {
@@ -10,7 +10,7 @@ export const Todos = () => {
 
     const token = sessionStorage.getItem('accessToken');
     const [todos, setTodos] = useState([]);
-    const [search, setSearch] = useState([]);
+    const [search, setSearch] = useState("");
 
     function handleInvalidToken(error) {
         if (error.response.status === 401 ) {
@@ -28,24 +28,15 @@ export const Todos = () => {
         }
     }
 
-    function HandleFinishClick(todo) {
-        instance.patch(`/todos/${todo.id}/`, {
-                complete: !todo.complete
-            },
-            {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            }
-        )
-        .then(response => {
-            console.log('Todo updated:', response.data);
-            fetchTodos();
-        })
-        .catch(error => {
+    async function HandleFinishClick(todo) {
+
+        try {
+            await todoToggleFinishAsync(todo);
+        } catch (error) {
             handleInvalidToken(error);
-            console.error('Finish error:', error.response ? error.response.data : error.message);
-        });
+        }
+
+        await fetchTodos(search);
     }
 
     function HandleDeleteClick(todo) {
