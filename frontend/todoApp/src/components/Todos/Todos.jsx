@@ -1,8 +1,7 @@
 import user_icon from '../../assets/person.png'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllTodosAsync, todoToggleFinishAsync } from '../../api/api_todo.js';
-import instance from '../../api/api_instance.js';
+import { getAllTodosAsync, todoToggleFinishAsync, todoDeleteAsync } from '../../api/api_todo.js';
 
 export const Todos = () => {
 
@@ -39,20 +38,14 @@ export const Todos = () => {
         await fetchTodos(search);
     }
 
-    function HandleDeleteClick(todo) {
-        instance.delete(`/todos/${todo.id}/`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            console.log('Todo deleted:', response.data);
-            fetchTodos();
-        })
-        .catch(error => {
+    async function HandleDeleteClick(todo) {
+        try {
+            await todoDeleteAsync(todo.id);
+        } catch (error) {
             handleInvalidToken(error);
-            console.error('Delete error:', error.response ? error.response.data : error.message);
-        });
+        }
+
+        await fetchTodos(search);
     }
 
     function HandleSearchChange(search) {
