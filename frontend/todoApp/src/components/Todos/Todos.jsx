@@ -95,17 +95,23 @@ export const Todos = () => {
         <div className='flex flex-col items-center gap-4 w-full mt-8'>
             <div className='text-blue-500 text-5xl font-bold'>Lista de Tarefas</div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
-            <div className='flex flex-col w-7/10'>
-                <div className='flex items-center m-auto w-full h-12 rounded-md bg-gray-200'>
-                    <img className='mx-8' src={user_icon} alt='' />
-                    <input
-                        className='bg-transparent text-blue-500 text-lg w-100 h-12 border-none outline-none'
-                        type='text'
-                        placeholder='Busca'
-                        value={search}
-                        onChange={(v) => HandleSearchChange(v.target.value)}
-                    />
+            <div className='flex flex-row justify-between w-9/10'>
+                <div className='flex flex-col w-8/10'>
+                    <div className='flex items-center m-auto w-full h-12 rounded-md bg-gray-200'>
+                        <img className='mx-8' src={user_icon} alt='' />
+                        <input
+                            className='bg-transparent text-blue-500 text-lg w-full h-12 border-none outline-none'
+                            type='text'
+                            placeholder='Busca'
+                            value={search}
+                            onChange={(v) => HandleSearchChange(v.target.value)}
+                        />
+                    </div>
                 </div>
+                <button
+                    className='bg-blue-500 text-lg text-white rounded-md font-bold cursor-pointer w-1/10 min-w-20'>
+                    Novo
+                </button>
             </div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
         </div>
