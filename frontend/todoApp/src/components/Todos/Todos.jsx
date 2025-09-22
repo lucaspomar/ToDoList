@@ -62,12 +62,12 @@ export const Todos = () => {
     }, []);
 
     const todosList = todos.map(todo =>
-        <div key={todo.id} className='flex flex-col w-full pt-4 gap-4'>
+        <div key={todo.id} className='flex flex-col items-center bg-gray-200 w-9/10 m-auto rounded-md pt-4 pb-4'>
             <div className='text-blue-500 text-2xl font-bold w-9/10 m-auto'>{todo.title}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.description}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.due_date}</div>
             <div className='text-black text-2xl w-9/10 m-auto'>{todo.complete ? "Finalizado" : "Não finalizado"}</div>
-            <div className="flex flex-wrap justify-center gap-5 m-auto">
+            <div className="flex flex-wrap justify-center gap-5 m-auto pt-4">
                 <div
                     className='flex justify-center items-center w-50 h-10 text-white rounded-xl
                     text-lg font-bold cursor-pointer bg-green-700'
@@ -86,7 +86,6 @@ export const Todos = () => {
                     Deletar
                 </div>
             </div>
-            <div className='self-center w-9/10 h-1.5 rounded-md bg-blue-500 '></div>
         </div>
     );
 
@@ -115,7 +114,9 @@ export const Todos = () => {
             </div>
             <div className='bg-blue-500 w-9/10 h-1.5 rounded-md'></div>
         </div>
-        {todosList}
+        <div className='flex flex-col items-center w-full m-auto pt-8 pb-8 gap-8'>
+            {todosList}
+        </div>
     </div>
   )
 }
