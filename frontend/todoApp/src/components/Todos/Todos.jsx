@@ -1,4 +1,4 @@
-import user_icon from '../../assets/person.png'
+import search_icon from '../../assets/search.svg'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllTodosAsync, todoToggleFinishAsync, todoDeleteAsync } from '../../api/api_todo.js';
@@ -97,7 +97,7 @@ export const Todos = () => {
             <div className='flex flex-row justify-between w-9/10'>
                 <div className='flex flex-col w-8/10'>
                     <div className='flex items-center m-auto w-full h-12 rounded-md bg-gray-200'>
-                        <img className='mx-8' src={user_icon} alt='' />
+                        <img className='mx-6' src={search_icon} alt='' />
                         <input
                             className='bg-transparent text-blue-500 text-lg w-full h-12 border-none outline-none'
                             type='text'
